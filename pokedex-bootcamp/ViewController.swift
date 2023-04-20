@@ -45,4 +45,15 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.pokePhoto.image = pokemons[indexPath.row].photo
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            if let viewController = storyboard?.instantiateViewController(identifier: "SecondViewController") as? SecondViewController {
+                self.navigationController?.pushViewController(viewController, animated: true)
+                
+                viewController.secondViewImagePokemon = pokemons[indexPath.row].photo
+                viewController.secondViewNamePokemon = pokemons[indexPath.row].name
+                viewController.secondViewTypePokemon = pokemons[indexPath.row].type
+                viewController.secondViewDescriptionPokemon = pokemons[indexPath.row].description
+            }
+        }
 }
